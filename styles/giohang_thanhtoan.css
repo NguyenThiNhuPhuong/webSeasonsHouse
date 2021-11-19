@@ -1,0 +1,80 @@
+.content {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 200px;
+    margin-bottom: 100px;
+}
+
+.tonggia {
+    display: flex;
+}
+
+.tongtien {
+    font-size: 25px;
+    color: red;
+    flex-grow: 1;
+}
+
+.btn_thanhtoan {
+    justify-content: right;
+    height: 40px;
+    width: 150px;
+}
+
+.thanhtoan_bentrai {
+    width: 45%;
+    margin-left: 5%;
+}
+
+.thanhtoan_benphai {
+    width: 50%;
+}
+
+.thanhtoan_row {
+    display: flex;
+}
+
+.soluong {
+    width: 80px;
+    height: 30px;
+    padding: 10px 0px 10px 10px;
+}
+
+#anh {
+    width: 200px;
+}
+
+@media only screen and (max-width: 739px) {
+    #anh {
+        width: 50px;
+    }
+    .thanhtoan_row {
+        display: block;
+    }
+    .thanhtoan_bentrai {
+        width: 100%;
+        margin-left: 0;
+    }
+    .thanhtoan_benphai {
+        width: 100%;
+    }
+    .anh_thanhtoan {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:1024px) and (min-width:740px) {
+    .thanhtoan_row {
+        display: block;
+    }
+    .thanhtoan_bentrai {
+        width: 100%;
+        margin-left: 0;
+    }
+    .thanhtoan_benphai {
+        width: 100%;
+    }
+    .anh_thanhtoan {
+        width: 60px;
+    }
+}

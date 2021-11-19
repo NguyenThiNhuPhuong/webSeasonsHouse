@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.content_thanhben {
+    position: fixed;
+    top: 40px;
+    bottom: 0px;
+    left: 0px;
+    width: 18%;
+    padding-top: 30px;
+    line-height: 50px;
+    font-weight: 500;
+    background-color: #c98aee;
+    border-right: 1px gray solid;
+}
+
+li {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.content_thanhben a {
+    color: black;
+}
+
+
+/* #tksp {
+    width: 250px;
+    float: right;
+    margin-top: 15px;
+} */
+
+.timkiem {
+    float: right;
+    width: 320px;
+    margin-top: 15px;
+}
+
+.active {
+    background-color: orange;
+}
+
+table {
+    width: 100%;
+}
+
+.content_thanhben a:hover {
+    color: rgb(75, 48, 233);
+    text-decoration: none;
+}
+
+.content_hienthi {
+    overflow: auto;
+    width: 82%;
+    margin-left: 18%;
+    margin-top: 40px;
+}
+
+.head_admin {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    width: 100%;
+    height: 40px;
+    background-color: #832fb4;
+    justify-items: center;
+}
+
+.head_admin h3 {
+    flex-grow: 1;
+    margin-left: 20px;
+    color: white;
+}
+
+.noidung h3 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.head_admin a {
+    color: white;
+    margin-right: 20px;
+    line-height: 40px;
+}
+
+.head_admin a:hover {
+    text-decoration: none;
+    color: rgb(8, 7, 8);
+}
+
+.noidung {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.roww {
+    display: flex;
+}
+
+.chitiet {
+    margin-bottom: 60px;
+}
+
+.noidung_table {
+    width: 100%;
+    max-height: 490px;
+    overflow: auto;
+    /* position: relative;*/
+}
+
+#menu {
+    position: fixed;
+    top: 35px;
+    left: 2px;
+    color: #c98aee;
+    z-index: 2;
+    font-size: 25px;
+    display: none;
+}
+
+#close {
+    position: fixed;
+    top: 40px;
+    left: 170px;
+    color: rgb(8, 8, 8);
+    z-index: 2;
+    font-size: 20px;
+    display: none;
+}
+
+#bang {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 200px;
+    height: 100%;
+    background-color: black;
+    color: antiquewhite;
+}
+
+@media only screen and (max-width:1024px) and (min-width:740px) {}
+
+@media only screen and (max-width: 739px) {
+    .content_thanhben {
+        width: 200px;
+        display: none;
+    }
+    .content_hienthi {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 40px;
+    }
+    .timkiem {
+        float: right;
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    #menu {
+        display: block;
+    }
+}

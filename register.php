@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = md5($_POST['passdk']);
     $repassword = md5($_POST['repassdk']);
     $type_id = 2;
-    $updated_at    = $created_at = date("Y-m-d h:s:i");
+   $updated_at= $created_at = date("Y-m-d h:s:i");
 
     $query = " SELECT email from nguoidung";
     $list = executeResult($query);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
     if ($isEmail) {
         if ($password == $repassword) {
-            $query = "INSERT INTO nguoidung (username,password,type_id,email,created_at,updated_at	) VALUES('" . $_POST['namedk'] . "','" . $password . "','" . $type_id . "','" . $_POST['emaildk'] . "','" . $created_at . "','" . $updated_at . "')";
+            $query = "INSERT INTO nguoidung (username,password,type_id,email,nen,avatar,created_at,updated_at	) VALUES('" . $_POST['namedk'] . "','" . $password . "','" . $type_id . "','" . $_POST['emaildk'] . "','". $_POST['nen'] . "','". $_POST['avatar'] . "','" . $created_at . "','" . $updated_at . "')";
             echo $query;
             execute($query);
             header("Location: login.php");
@@ -95,6 +95,12 @@ function authenToken()
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" name="repassdk" placeholder="Reconfirm password" minlength="6" required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <input type="text" class="form-control" name="nen"  value="https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg"  required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <input type="text" class="form-control" name="avatar" value="https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg" required>
                     </div>
                     <a href="./login.php">Tôi đã có tài khoản</a><br><br>
                     <button type="submit" class="btn btn-primary">Đăng ký</button>

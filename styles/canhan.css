@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+}
+
+.content {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.canhan_phai {
+    width: 40%;
+}
+
+.canhan_trai {
+    width: 60%;
+}
+
+.backgroup {
+    width: 80%;
+    margin-left: 10%;
+}

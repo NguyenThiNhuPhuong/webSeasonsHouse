@@ -74,7 +74,7 @@ if ($user == null) {
                             <div class="user_box ml-auto">
                                 <div class="user_box_login user_box_link" id="dangky"><a href="./login.php">Đăng Nhập</a></div>
                                 <div class="user_box_register user_box_link" id="dangnhap"><a href="./register.php">Đăng Ký</a></div>
-                                <div class="user_box_register user_box_link" id="user"><a href="./user.php"><?= $username ?></a></div>
+                                <div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><?= $username ?></a></div>
                                 <div class="user_box_logout user_box_link" id="dangxuat"><a href="./logout.php">Đăng xuất</a></div>
                             </div>
                         </div>

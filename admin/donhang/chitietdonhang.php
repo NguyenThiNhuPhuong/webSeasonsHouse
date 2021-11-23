@@ -38,6 +38,7 @@ if ($user == null) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../print.css" media="print" />
     <link rel="icon" href="../../images/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../admin.css">
@@ -109,7 +110,8 @@ if ($user == null) {
                     </table>
                     <p>Tổng tiền: <?= number_format($total, 0, '.', '.') ?> VND</p>
                     <p>Ngày đặt hàng: <?= date("d/m/Y h:s:i", strtotime($donhang['order_date'])) ?></p>
-                    <a href="./index.php">Quay lại</a>
+                    <a id= "quaylai" href="./index.php">Quay lại</a>
+                    <button id= "in_donhang" class="btn btn-sm btn-primary" onclick = "window.print ()">In đơn hàng</button>
 
                 </div>
 

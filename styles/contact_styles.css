@@ -76,6 +76,13 @@ ul {
     margin-bottom: 0px;
 }
 
+#user_avata {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
 #user {
     margin-right: 10 px;
 }

@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
         if ($isEmail) {
             if ($password == $repassword) {
-                $query = "INSERT INTO nguoidung (username,password,type_id,email,created_at,updated_at	) VALUES('" . $_POST['username'] . "','" . $password . "','" . $type_id . "','" . $_POST['email'] . "','" . $created_at . "','" . $updated_at . "')";
+                $query = "INSERT INTO nguoidung (username,password,type_id,email,nen,avatar,created_at,updated_at	) VALUES('" . $_POST['username'] . "','" . $password . "','" . $type_id . "','" . $_POST['email'] . "','" .$_POST['nen'] . "','". $_POST['avatar'] . "','" . $created_at . "','" . $updated_at . "')";
                 execute($query);
                 header("Location: ./index.php ");
             } else {
@@ -105,7 +105,7 @@ if ($user == null) {
 
     <div id="menu"><i class="fa fa-bars" aria-hidden="true"></i></div>
     <div id="close"><i class="fa fa-times-circle" aria-hidden="true"></i></div>
-    
+
     <div class="content roww">
 
         <div class="content_thanhben">
@@ -132,7 +132,6 @@ if ($user == null) {
 
                     <div class="form-group">
                         <label>Type</label>
-
                         <select name="type_id" class="form-control" required>
                             <option value="">[chọn type]</option>
                             <?php
@@ -152,15 +151,19 @@ if ($user == null) {
 
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label>Password</label>
                         <input type="password" class="form-control" name="pass" placeholder="Password" minlength="6" required>
                     </div>
                     <div class="form-group">
-
                         <label>Reconfirm password</label>
                         <input type="password" class="form-control" name="repass" placeholder="Reconfirm password" minlength="6" required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <input type="text" class="form-control" name="nen"  value="https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg"  required>
+                    </div>
+                    <div class="form-group" style="display: none;">
+                        <input type="text" class="form-control" name="avatar" value="https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg" required>
                     </div>
                     <button id="btnnhap" type="submit" class="btn btn-primary">Thêm</button>
                 </form>
@@ -176,18 +179,18 @@ if ($user == null) {
         $("#btnnhap").text("Cập nhật");
         $("#nhap").prop("readonly", true);
     }
-    
+
     $("#menu").click(function() {
         $("#menu").hide("slow");
         $(".content_thanhben").show("slow");
         $("#close").show("slow");
     });
-     $("#close").click(function() {
+    $("#close").click(function() {
 
         $("#close").hide("slow");
         $(".content_thanhben").hide("slow");
         $("#menu").show("slow")
-    }); 
+    });
 </script>
 
 </html>

@@ -1,48 +1,49 @@
 <?php
-require_once('./db/database_sql.php');
-function authenToken()
-{
-    if (isset($_COOKIE['token'])) {
-        $token = $_COOKIE['token'];
-        if (empty($token)) {
-            return null;
-        }
-    } else {
-        return null;
-    }
-    $query = "SELECT nguoidung.* from nguoidung,tokens where nguoidung.email=tokens.user_email and tokens.token='$token'";
-    $list = executeResult($query);
-    if ($list != null && count($list) > 0) {
-        return $list[0];
-    }
-
-    return null;
-}
+require_once("./db/database_sql.php");
+require_once("./function/function.php");
 $user = authenToken();
-$username = "";
+$status_user = true;
 if ($user == null) {
     $status_user = false;
     header('Location: login.php');
     die();
-} else {
-    $username = $user['username'];
-    $status_user = true;
 }
+
+$username = $user['username'];
+$email = $user['email'];
+$type="";
+if(isset($_GET['type'])){
+    $type=$_GET['type'];
+}
+if($type==1){
+     $query = "SELECT * From orders WHERE order_email='" . $email . "'";
+}else if($type==2){
+    $query = "SELECT * From orders WHERE order_email='" . $email . "'";
+}else if($type==3){
+    $query = "SELECT * From orders WHERE order_email='" . $email . "'";
+}else if($type==4){
+    $query = "SELECT * From orders WHERE order_email='" . $email . "'";
+}else {
+    $query = "SELECT * From orders WHERE order_email='" . $email . "'";
+}
+$list = [];
+$list = executeResult($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Thanh toán</title>
+    <title>Đơn hàng của tôi</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Season House Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/logo.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/giohang_thanhtoan.css">
+    <link rel="stylesheet" type="text/css" href="styles/canhan.css">
     <link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
 </head>
 
@@ -71,9 +72,9 @@ if ($user == null) {
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                            <div class="user_box_login user_box_link" id="dangky"><a href="./login.php">Đăng Nhập</a></div>
+                                <div class="user_box_login user_box_link" id="dangky"><a href="./login.php">Đăng Nhập</a></div>
                                 <div class="user_box_register user_box_link" id="dangnhap"><a href="./register.php">Đăng Ký</a></div>
-                                <div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><img id="user_avata" src="<?=$user['avatar']?>" alt="avatar"><?= $username ?></a></div>
+                                <div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><img id="user_avata" src="<?= $user['avatar'] ?>" alt="avatar"><?= $username ?></a></div>
                                 <div class="user_box_logout user_box_link" id="dangxuat"><a href="./logout.php">Đăng xuất</a></div>
                             </div>
                         </div>
@@ -132,9 +133,9 @@ if ($user == null) {
                                     <img style="width: 30px; height: 30px; justify-content: right;margin-left: 20px; margin-top: 10px;" src="https://cdn-icons-png.flaticon.com/512/726/726496.png" alt="cart">
                                 </a>
                                 <a href="giohang.php">
-                                   
+
                                     <div style="color: rgb(255, 255, 255); font-weight: 700; margin-left: 2px; margin-bottom: 10px;font-size: 20px;border-radius: 50%; margin-bottom: 30px; background-color: brown; width: 18px;height: 18px; text-align: center;font-size: small;">
-                                     0
+                                        0
                                     </div>
                                 </a>
                             </div>
@@ -162,9 +163,56 @@ if ($user == null) {
         <!-- Home -->
 
         <div class="content">
-            <h3 style="font-size:22px;text-align: center;">Đặt hàng thành công!</h3>
-        </div>
+            <div class="row">
+                <div class="canhan_thanhchon">
+                    <div class="thanhchon_head row">
+                        <img id="user_thanhchon" src="<?= $user['avatar'] ?>" alt="avatar">
+                        <div class="info_thanhchon">
+                            <p style="font-weight: bold;"><?= $username ?></p>
+                            <p><?= $user['email'] ?></p>
+                        </div>
 
+                    </div>
+                    <hr>
+                    <ul>
+                        <li> <a href="./canhan.php"><i class="fa fa-user" aria-hidden="true"></i> Tài khoản của tôi</a></li>
+                        <li> <a style="color: orange;" href="./donhang.php?type=1"><i class="fa fa-file-text-o" aria-hidden="true"></i> Đơn hàng của tôi</a></li>
+                        <li> <a href="./thongbaouser.php"><i class="fa fa-bell" aria-hidden="true"></i> Thông báo</a></li>
+                    </ul>
+
+
+
+                </div>
+                <div class="canhan_phai">
+                    <ul class="ul_thanhchon">
+                        <li><a class="canhan_active" data-type="1" href="./donhang.php?type=1">Tất cả</a></li>
+                        <li><a class="canhan_active" data-type="2" href="./donhang.php?type=2">Chờ xác nhận</a></li>
+                        <li><a class="canhan_active" data-type="3" href="./donhang.php?type=3">Chờ nhận hàng</a></li>
+                        <li><a class="canhan_active" data-type="4" href="./donhang.php?type=4">Đã giao</a></li>
+                        <li><a class="canhan_active" data-type="5" href="./donhang.php?type=5">Đã hủy</a></li>
+                    </ul>
+                    <?php
+                    if (count($list) > 0) {
+                        echo '<p>Tất cả : ' . count($list) . ' đơn hàng</p>';
+                        echo '<ul>';
+                        for ($i = 0; $i < count($list); $i++) {
+                            echo ' <li> <a  href="./donhangcuatoi.php?id=' . $list[$i]['id'] . '"> ' . $list[$i]['id'] . '</a> <span>' . date("d/m/Y h:s:i", strtotime($list[$i]['order_date'])) . '</span> </li>';
+                        }
+                        echo '</ul>';
+                    } else {
+                        echo '
+                        <div class="thongbaotrong">
+                        <div>
+
+                        <img id="anh_donhang" src="https://png.pngtree.com/png-vector/20191023/ourmid/pngtree-calander-vector-icon-with-white-background-png-image_1849334.jpg" alt="anh">
+                        <p>Chưa có đơn hàng</p>
+                        </div>
+                        </div>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
         <!-- Footer -->
         <footer class="footer">
             <div class="container">
@@ -318,16 +366,23 @@ if ($user == null) {
             </div>
         </div>
     </div>
-<script>
-     var status_user = '<?= $status_user ?>';
-            if (status_user == '1') {
-                document.querySelector("#dangky").style.display = "none";
-                document.querySelector("#dangnhap").style.display = "none";
-            } else {
-                document.querySelector("#dangxuat").style.display = "none";
-                document.querySelector("#user").style.display = "none";
+    <script>
+        var status_user = '<?= $status_user ?>';
+        if (status_user == '1') {
+            document.querySelector("#dangky").style.display = "none";
+            document.querySelector("#dangnhap").style.display = "none";
+        } else {
+            document.querySelector("#dangxuat").style.display = "none";
+            document.querySelector("#user").style.display = "none";
+        }
+        var active_type = '<?= $type ?>';
+        document.querySelectorAll(".ul_thanhchon a").forEach(element => {
+            if (element.dataset.type != active_type) {
+                element.classList.remove('canhan_active')
             }
-</script>
+
+        });
+    </script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="styles/bootstrap4/popper.js"></script>
     <script src="styles/bootstrap4/bootstrap.min.js"></script>

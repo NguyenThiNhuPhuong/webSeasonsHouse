@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 12:26 PM
+-- Generation Time: Nov 23, 2021 at 07:11 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -32,6 +32,11 @@ CREATE TABLE `nguoidung` (
   `username` varchar(250) COLLATE utf8_vietnamese_ci NOT NULL,
   `password` varchar(250) COLLATE utf8_vietnamese_ci NOT NULL,
   `type_id` int(11) NOT NULL,
+  `sdt` varchar(10) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `gt` varchar(3) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `điachi` varchar(250) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `nen` varchar(250) COLLATE utf8_vietnamese_ci DEFAULT NULL,
+  `avatar` varchar(250) COLLATE utf8_vietnamese_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
@@ -40,10 +45,14 @@ CREATE TABLE `nguoidung` (
 -- Dumping data for table `nguoidung`
 --
 
-INSERT INTO `nguoidung` (`email`, `username`, `password`, `type_id`, `created_at`, `updated_at`) VALUES
-('1951120126@sv.ut.edu.vn', 'Nguyễn Như Phượng', 'e10adc3949ba59abbe56e057f20f883e', 2, '2021-11-10 06:43:20', '2021-11-11 06:04:36'),
-('quanglinh@gmail.com', 'Quang Linh', 'e64b78fc3bc91bcbc7dc232ba8ec59e0', 1, '2021-11-11 06:14:25', '2021-11-11 06:27:35'),
-('xuanthoi@gmail.com', 'Xuân Thời', 'e10adc3949ba59abbe56e057f20f883e', 2, '2021-11-17 02:21:45', '2021-11-17 02:21:45');
+INSERT INTO `nguoidung` (`email`, `username`, `password`, `type_id`, `sdt`, `gt`, `điachi`, `nen`, `avatar`, `created_at`, `updated_at`) VALUES
+('1951120126@sv.ut.edu.vn', 'Nguyễn Như Phượng', 'e10adc3949ba59abbe56e057f20f883e', 2, '0707583174', 'Nữ', 'Xóm 2, Thuận Hiệp, Bình Thuận, Tây Sơn, Bình Định', NULL, 'blob:http://localhost:8080/8bec9f7a-9681-43d4-8609-70c2c743b836', '2021-11-10 06:43:20', '2021-11-23 07:17:00'),
+('1954030051@sv.ut.edu.vn', 'Thảo', '17f9dd3b1bcc120b7052d5ba4a2a41b9', 2, NULL, NULL, NULL, 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', '2021-11-21 07:45:50', '2021-11-21 07:45:50'),
+('lanhthilehang@gmail.com', 'Lãnh Thị Lệ Hằng', 'c5e519f8921255ffd9a1207706a74f8c', 2, NULL, NULL, NULL, 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', '2021-11-21 07:20:25', '2021-11-21 07:20:25'),
+('minhanh@gmail.com', 'Minh Anh', 'e10adc3949ba59abbe56e057f20f883e', 2, NULL, NULL, NULL, 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', '2021-11-20 05:01:48', '2021-11-20 05:01:48'),
+('nguyenthiphuong2@gmail.com', 'Xuân Thời', 'e10adc3949ba59abbe56e057f20f883e', 2, '0842758921', 'Nữ', 'Xóm 4, Phú Hưng, Bình Tân, Tây Sơn, Bình Định', 'https://chiase24.com/wp-content/uploads/2019/09/T%E1%BB%95ng-h%E1%BB%A3p-c%C3%A1c-h%C3%ACnh-%E1%BA%A3nh-l%C3%A0m-h%C3%ACnh-n%E1%BB%81n-m%C3%A0u-x%C3%A1m-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-27.jpg', 'blob:http://localhost:8080/66b9655b-2054-4602-a467-9a5a47adec82', '2021-11-22 03:18:18', '2021-11-23 04:53:36'),
+('quanglinh@gmail.com', 'Quang Linh', 'e64b78fc3bc91bcbc7dc232ba8ec59e0', 1, '', '', '', NULL, NULL, '2021-11-11 06:14:25', '2021-11-11 06:27:35'),
+('xuanthoi@gmail.com', 'Xuân Thời', 'e10adc3949ba59abbe56e057f20f883e', 2, '', '', '', NULL, NULL, '2021-11-17 02:21:45', '2021-11-23 04:00:35');
 
 -- --------------------------------------------------------
 
@@ -71,6 +80,8 @@ INSERT INTO `orders` (`id`, `order_email`, `fullname`, `phone_number`, `email`, 
 ('ĐH0212424280', 'quanglinh@gmail.com', 'Quang Linh', '0707583174', 'quanglinh@gmail.com', 'Bình Thuận, Tây Sơn , Bình Định', 155000, '2021-11-17 02:12:42'),
 ('ĐH0634350488', '1951120126@sv.ut.edu.vn', 'Lan Anh', '0795847589', 'lananh@gmail.com', 'Bình Thuận, Tây Sơn , Bình Định', 25000, '2021-11-18 06:34:35'),
 ('ĐH0707126445', '1951120126@sv.ut.edu.vn', 'Xuân Thời', '0707586958', 'nguyenthinhuphuong2@gmail.com', 'Tây Vinh, Tây Sơn, Bình Định', 20000, '2021-11-19 07:07:12'),
+('ĐH0748269982', 'lanhthilehang@gmail.com', 'Lãnh Thị Lệ Hằng', '0258764252', 'lanhthilehang@gmail.com', 'Tây Vinh, Tây Sơn, Bình Định', 160000, '2021-11-21 07:48:26'),
+('ĐH0758520492', '1954030051@sv.ut.edu.vn', 'Thái Hoàng Phương Thảo ', '0763307675', '1954030051@sv.ut.edu.vn', 'Thuận Nhứt, Bình Thuận, Tây Sơn, Bình Định', 90000, '2021-11-21 07:58:52'),
 ('ĐH0824268854', 'quanglinh@gmail.com', '1951120126', '0712548695', '1951120126@sv.ut.edu.vn', 'Tây Vinh, Tây Sơn, Bình Định', 30000, '2021-11-19 08:24:26');
 
 -- --------------------------------------------------------
@@ -101,7 +112,11 @@ INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `product_title`, `n
 (54, 'ĐH0210467646', 14, 'Combo 50K', 1, 50000),
 (55, 'ĐH0634350488', 12, 'Trà vải', 1, 25000),
 (56, 'ĐH0707126445', 11, 'Trà sữa trân châu, đường đen', 1, 20000),
-(57, 'ĐH0824268854', 6, 'Bánh tráng trộn', 2, 15000);
+(57, 'ĐH0824268854', 6, 'Bánh tráng trộn', 2, 15000),
+(58, 'ĐH0748269982', 19, 'Bánh gạo Tokbokki', 2, 80000),
+(59, 'ĐH0758520492', 6, 'Bánh tráng trộn', 1, 15000),
+(60, 'ĐH0758520492', 15, 'Kem sầu riêng', 1, 15000),
+(61, 'ĐH0758520492', 36, 'Kem Gelato', 1, 60000);
 
 -- --------------------------------------------------------
 
@@ -209,9 +224,19 @@ CREATE TABLE `tokens` (
 --
 
 INSERT INTO `tokens` (`user_email`, `token`, `created_at`) VALUES
+('1951120126@sv.ut.edu.vn', '51c99aaac59a4e02bc46a70ca16837f3', '2021-11-22 06:05:54'),
+('1951120126@sv.ut.edu.vn', 'd8192a44fe481a03520ab2ce686360e0', '2021-11-23 06:14:54'),
+('1951120126@sv.ut.edu.vn', 'e40ffda700aaa1723094ce5a764be62e', '2021-11-23 06:12:53'),
+('1951120126@sv.ut.edu.vn', 'e4c260cba68a52163ead48abbc299b4b', '2021-11-23 05:45:56'),
+('1954030051@sv.ut.edu.vn', '456041fd4abe1a62443d641287c5fee7', '2021-11-21 07:07:51'),
+('lanhthilehang@gmail.com', 'a8088c4090bf4e73843248f076db4842', '2021-11-21 07:42:25'),
+('minhanh@gmail.com', '5003617c40c2498e39571508cd0dff39', '2021-11-20 05:11:48'),
+('minhanh@gmail.com', 'df466c78f9868ddf518eb3206a7cfd44', '2021-11-20 08:27:34'),
+('nguyenthiphuong2@gmail.com', 'b3dc3fdb04b0fcb7352d15a9eaee9452', '2021-11-22 03:32:18'),
 ('quanglinh@gmail.com', '38dfd39dfaff2d07ddd3b732f597b86a', '2021-11-19 03:19:37'),
 ('quanglinh@gmail.com', '42e58b31a41ec1ebfee12b7bb1a20164', '2021-11-17 05:53:30'),
 ('quanglinh@gmail.com', '6907a24976b6303c74fdf4b5acc1a0b5', '2021-11-17 05:25:19'),
+('quanglinh@gmail.com', '94fadcd8c8c82ccfd97538eaf3de8cbb', '2021-11-21 07:29:18'),
 ('quanglinh@gmail.com', 'a042924d6e9b1c973fdfdfb8088c3669', '2021-11-19 07:16:43'),
 ('quanglinh@gmail.com', 'a3cc600d9975fa41b4dd84854dc6418c', '2021-11-17 02:09:51'),
 ('quanglinh@gmail.com', 'a62dfde9af6128fdc8eb3225d89555f8', '2021-11-17 06:57:47'),
@@ -299,7 +324,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `product`

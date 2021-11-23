@@ -93,6 +93,13 @@ p {
     text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 }
 
+#user_avata {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
 p a {
     display: inline;
     position: relative;

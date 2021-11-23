@@ -89,7 +89,7 @@ if (isset($_POST['string'])) {
 							<div class="user_box ml-auto">
 								<div class="user_box_login user_box_link" id="dangky"><a href="./login.php">Đăng Nhập</a></div>
 								<div class="user_box_register user_box_link" id="dangnhap"><a href="./register.php">Đăng Ký</a></div>
-								<div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><?= $username ?></a></div>
+								<div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><img id="user_avata" src="<?=$user['avatar']?>" alt="avatar"><?= $username ?></a></div>
 								<div class="user_box_logout user_box_link" id="dangxuat"><a href="./logout.php">Đăng xuất</a></div>
 							</div>
 						</div>
@@ -723,20 +723,13 @@ if (isset($_POST['string'])) {
 				<script>
 					var pageCurrent = '<?= $pageCurrent ?>';
 					document.querySelectorAll(".page-item").forEach(element => {
-
-						console.log(element.dataset.id)
 						if (element.dataset.id != pageCurrent) {
-							console.log("hhi")
 							element.classList.remove('active')
 						}
 
 					});
 					var active_id = '<?= $id?>';
-					console.log(active_id)
-					console.log(document.querySelectorAll(".search_tab"))
 					document.querySelectorAll(".search_tab").forEach(element => {
-
-						console.log(element.dataset.id)
 						if (element.dataset.id != active_id) {
 							element.classList.remove('active')
 						}

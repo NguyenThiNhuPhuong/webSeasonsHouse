@@ -1,48 +1,39 @@
 <?php
-require_once('./db/database_sql.php');
-function authenToken()
-{
-    if (isset($_COOKIE['token'])) {
-        $token = $_COOKIE['token'];
-        if (empty($token)) {
-            return null;
-        }
-    } else {
-        return null;
-    }
-    $query = "SELECT nguoidung.* from nguoidung,tokens where nguoidung.email=tokens.user_email and tokens.token='$token'";
-    $list = executeResult($query);
-    if ($list != null && count($list) > 0) {
-        return $list[0];
-    }
-
-    return null;
-}
+require_once("./db/database_sql.php");
+require_once("./function/function.php");
 $user = authenToken();
-$username = "";
+$status_user = true;
 if ($user == null) {
     $status_user = false;
     header('Location: login.php');
     die();
-} else {
-    $username = $user['username'];
-    $status_user = true;
 }
+$sdt = $gt = $điachi = "";
+$username = $user['username'];
+$email = $user['email'];
+if (isset($user['sdt'])) {
+    $sdt = $user['sdt'];
+}
+if (isset($user['điachi'])) {
+    $điachi = $user['điachi'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Thanh toán</title>
+    <title>Thông báo</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Season House Project">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/logo.png" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/offers_styles.css">
-    <link rel="stylesheet" type="text/css" href="styles/giohang_thanhtoan.css">
+    <link rel="stylesheet" type="text/css" href="styles/canhan.css">
     <link rel="stylesheet" type="text/css" href="styles/offers_responsive.css">
 </head>
 
@@ -71,9 +62,9 @@ if ($user == null) {
                                 </ul>
                             </div>
                             <div class="user_box ml-auto">
-                            <div class="user_box_login user_box_link" id="dangky"><a href="./login.php">Đăng Nhập</a></div>
+                                <div class="user_box_login user_box_link" id="dangky"><a href="./login.php">Đăng Nhập</a></div>
                                 <div class="user_box_register user_box_link" id="dangnhap"><a href="./register.php">Đăng Ký</a></div>
-                                <div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><img id="user_avata" src="<?=$user['avatar']?>" alt="avatar"><?= $username ?></a></div>
+                                <div class="user_box_register user_box_link" id="user"><a href="./canhan.php"><img id="user_avata" src="<?= $user['avatar'] ?>" alt="avatar"><?= $username ?></a></div>
                                 <div class="user_box_logout user_box_link" id="dangxuat"><a href="./logout.php">Đăng xuất</a></div>
                             </div>
                         </div>
@@ -132,9 +123,9 @@ if ($user == null) {
                                     <img style="width: 30px; height: 30px; justify-content: right;margin-left: 20px; margin-top: 10px;" src="https://cdn-icons-png.flaticon.com/512/726/726496.png" alt="cart">
                                 </a>
                                 <a href="giohang.php">
-                                   
+
                                     <div style="color: rgb(255, 255, 255); font-weight: 700; margin-left: 2px; margin-bottom: 10px;font-size: 20px;border-radius: 50%; margin-bottom: 30px; background-color: brown; width: 18px;height: 18px; text-align: center;font-size: small;">
-                                     0
+                                        0
                                     </div>
                                 </a>
                             </div>
@@ -162,7 +153,26 @@ if ($user == null) {
         <!-- Home -->
 
         <div class="content">
-            <h3 style="font-size:22px;text-align: center;">Đặt hàng thành công!</h3>
+            <div class="row">
+                <div class="canhan_thanhchon">
+                    <div class="thanhchon_head row">
+                        <img id="user_thanhchon" src="<?= $user['avatar'] ?>" alt="avatar">
+                        <div class="info_thanhchon">
+                            <p style="font-weight: bold;"><?= $username ?></p>
+                            <p><?= $user['email'] ?></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <ul>
+                        <li> <a  href="./canhan.php"><i class="fa fa-user" aria-hidden="true"></i> Tài khoản của tôi</a></li>
+                        <li> <a  href="./donhang.php?type=1"><i class="fa fa-file-text-o" aria-hidden="true"></i> Đơn hàng của tôi</a></li>
+                        <li> <a style="color: orange;" href="./thongbaouser.php"><i class="fa fa-bell" aria-hidden="true"></i> Thông báo</a></li>
+                    </ul>
+                </div>
+                <div class="canhan_phai">
+                    
+                </div>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -318,16 +328,16 @@ if ($user == null) {
             </div>
         </div>
     </div>
-<script>
-     var status_user = '<?= $status_user ?>';
-            if (status_user == '1') {
-                document.querySelector("#dangky").style.display = "none";
-                document.querySelector("#dangnhap").style.display = "none";
-            } else {
-                document.querySelector("#dangxuat").style.display = "none";
-                document.querySelector("#user").style.display = "none";
-            }
-</script>
+    <script>
+        var status_user = '<?= $status_user ?>';
+        if (status_user == '1') {
+            document.querySelector("#dangky").style.display = "none";
+            document.querySelector("#dangnhap").style.display = "none";
+        } else {
+            document.querySelector("#dangxuat").style.display = "none";
+            document.querySelector("#user").style.display = "none";
+        }
+    </script>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="styles/bootstrap4/popper.js"></script>
     <script src="styles/bootstrap4/bootstrap.min.js"></script>

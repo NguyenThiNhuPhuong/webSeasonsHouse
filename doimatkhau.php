@@ -203,22 +203,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <td>
                                     <p style="color: red;"><?= $thongbao ?></p>
                                 </td>
+                                <td ></td>
                             </tr>
                             <tr class="tr_matkhau">
                                 <td class="td_title"> <label for="password">Mật khẩu hiện tại</label></td>
                                 <td> <input type="password" class="form-control" name="password" id="password" minlength="6" required></td>
+                                <td style="padding-left: 25px;"> <a href="./quenmatkhau.php">Quên mật khẩu?</a> </td>
                             </tr>
                             <tr class="tr_matkhau">
                                 <td class="td_title"> <label for="newpassword">Mật khẩu mới</label></td>
                                 <td> <input type="password" class="form-control" name="newpassword" id="newpassword" minlength="6" required></td>
+                                <td ></td>
                             </tr>
                             <tr class="tr_matkhau">
                                 <td class="td_title"> <label for="renewpassword">Xác nhận mật khẩu</label></td>
                                 <td> <input type="password" class="form-control" name="renewpassword" id="renewpassword" minlength="6" required></td>
+                                <td ></td>
                             </tr>
                             <tr class="tr_matkhau">
                                 <td></td>
                                 <td> <button id="btnnhap" type="submit" class="btn btn-primary">Xác nhận</button></td>
+                                <td ></td>
                             </tr>
                         </table>
 

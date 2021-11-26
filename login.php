@@ -48,6 +48,9 @@ function authenToken()
 
     return null;
 }
+
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +87,7 @@ function authenToken()
                         <div class="form-group">
                             <input type="password" class="form-control" name="passdn" placeholder="Password" minlength="6" required>
                         </div>
+                        <a href="./quenmatkhau.php?type=0">Quên mật khẩu</a><br>
                         <a href="./register.php">Đăng ký tài khoản mới</a><br><br>
                         <button type="submit" class="btn btn-primary">Đăng nhập</button>
                     </form>

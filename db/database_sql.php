@@ -12,7 +12,8 @@ if ($connect->connect_error) {
 // dung cho insert, update, delete (tao chuoi truy van ben ngoai roi truyen vao)
 function execute($query)
 {
-    $connect = new mysqli("localhost", "root", "", "gianhang");
+    //$connect = new mysqli("localhost", "root", "", "gianhang");
+    $connect = new mysqli("us-cdbr-east-05.cleardb.net", "b876f0b37546b8", "2574a613", "heroku_af5435889b395a0");
     mysqli_set_charset($connect, "utf8");
     mysqli_query($connect, $query);
     $connect->close();
@@ -21,7 +22,8 @@ function execute($query)
 // tra ve ket qua cho select, select *(tao chuoi truy van ben ngoai roi truyen vao)
 function executeResult($query, $isSingle = false)
 {
-    $connect = new mysqli("localhost", "root", "", "gianhang");
+   // $connect = new mysqli("localhost", "root", "", "gianhang");
+   $connect = new mysqli("us-cdbr-east-05.cleardb.net", "b876f0b37546b8", "2574a613", "heroku_af5435889b395a0");
     mysqli_set_charset($connect, "utf8");
     $result = mysqli_query($connect, $query);
     $list = [];

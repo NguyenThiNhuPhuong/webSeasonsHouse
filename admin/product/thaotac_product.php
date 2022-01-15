@@ -12,7 +12,6 @@ if (isset($_GET['title'])) {
 
     for ($i = 0; $i < count($d); $i++) {
         $thumbnail = $d[$i]['thumbnail'];
-        // $thumbnail = str_replace("'", "\\'", $thumbnail);
         $id_quanly = $d[$i]['id_quanly'];
         $content = $d[$i]['content'];
         $price = $d[$i]['price'];

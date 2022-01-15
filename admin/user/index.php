@@ -109,7 +109,7 @@ $ds = executeResult($query);
 
     </div>
     <script>
-        $(".dlt").click(function() {
+        $(".dlt_user").click(function() {
             var email = $(this).data('email');
             $option = confirm("Bạn chắc chắn muốn xóa tài khoản " + email + " này không?")
             if ($option == false) {

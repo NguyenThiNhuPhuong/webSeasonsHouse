@@ -16,7 +16,6 @@ function authenToken()
     if ($list != null && count($list) > 0) {
         return $list[0];
     }
-
     return null;
 }
 $user = authenToken();

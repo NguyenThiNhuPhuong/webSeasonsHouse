@@ -1,6 +1,7 @@
 <?php
 //tao chuoi ket noi
-$connect = new mysqli("localhost", "root", "", "gianhang");
+//$connect = new mysqli("localhost", "root", "", "gianhang"); localhost
+$connect = new mysqli("us-cdbr-east-05.cleardb.net", "b876f0b37546b8", "2574a613", "heroku_af5435889b395a0");
 mysqli_set_charset($connect, "utf8");
 //kiem tra ket noi
 if ($connect->connect_error) {

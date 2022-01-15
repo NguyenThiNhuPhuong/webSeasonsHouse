@@ -356,7 +356,6 @@ if ($user == null) {
 						<!-- CTA Slider -->
 						<div class="cta_slider_container">
 							<div class="owl-carousel owl-theme cta_slider">
-
 								<?php
 								$query = "SELECT * FROM product where id_quanly=18 limit 0,3";
 								$list = executeResult($query);
